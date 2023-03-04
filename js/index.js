@@ -1,11 +1,16 @@
+  import Obstacle from "./Obstacle.js";
+
 window.onload = () => {
   document.getElementById('start-button').onclick = () => {
     startGame();
   };
 
   function startGame() {
+  
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext('2d');
+    
+    const obstacles = [new Obstacle(ctx)];
 
     const roadImg = new Image();
     roadImg.src = "images/road.png";
@@ -17,7 +22,7 @@ window.onload = () => {
     ctx.drawImage(roadImg, 0, 0);
     ctx.drawImage(carImg, pos, 350, 30, 55);
   }
-  
+
   document.addEventListener("keydown", function(event){
     if(event.code === 'ArrowLeft'){
       pos -= 10;
@@ -29,34 +34,20 @@ window.onload = () => {
      } else if (pos > 410 - carImg.width){
       pos = 410- carImg.width;
     };
-    
+
     ctx.drawImage(roadImg, 0, 0);
     ctx.drawImage(carImg, pos, 350, 30, 55);
+    obstacles.forEach((obstacle) => obstacle.draw());
     })
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    let posX = Math.floor(Math.random() * 410 - 70);
-    let posY = 0;
-    let boolean = true;
+    setInterval(() => {
+      obstacles.forEach((obstacle) => obstacle.moveObstacle());
+      ctx.drawImage(roadImg, 0, 0);
+      ctx.drawImage(carImg, pos, 350, 30, 55);
+      obstacles.forEach((obstacle) => obstacle.draw());
+    }, 100)
 
-    // function drawObstacle(){
-    // let obstacleWidth = 80;
-    // let obstacleHeight = 10;
-    // ctx.fillStyle = 'red';
-    // ctx.fillRect(posX, posY, obstacleWidth, obstacleHeight);
-    // }
-    // function moveDown(){
-    //   posY += 1;
-    // }
-
-    
-    //let posX = Math.floor(Math.random * 410);
-    //let posY = 0;
-    //ctx.fillStyle = 'red';
-    //ctx.fillRect(20, 20, 20, 50);
-
-
-
+    setInterval(() => obstacles.push(new Obstacle(ctx)),2000)
   }
 };
 

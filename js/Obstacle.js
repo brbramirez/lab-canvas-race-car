@@ -1,0 +1,20 @@
+class Obstacle {
+    constructor(ctx){
+        this.x = Math.floor(Math.random() * 220);
+        this.y = 0;
+        this.width = 60;
+        this.height = 30;
+        this.color = 'red';
+        this.ctx = ctx;
+    }
+    
+    draw(){
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+
+      moveObstacle(){
+        this.y +=10;
+      }
+    }
+    export default Obstacle;
