@@ -14,7 +14,9 @@ class Obstacle {
       }
 
       moveObstacle(){
+        if(this.y < 420) {
           this.y +=10;
+        }
       }
 
     left() {

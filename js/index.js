@@ -22,8 +22,8 @@ window.onload = () => {
       ctx.drawImage(roadImg, 0, 0);
       player.drawCar();
       ctx.fillStyle = 'white';
-      ctx.font = '30px Arial';
-      ctx.fillText(`Score: ${scores}`, 20, 40);
+      ctx.font = '25px Arial';
+      ctx.fillText(`Score: ${scores}`, 35, 40);
     }
 
 
@@ -55,8 +55,8 @@ window.onload = () => {
       player.drawCar();
       obstacles.forEach((obstacle) => obstacle.draw());
       ctx.fillStyle = 'white';
-      ctx.font = '30px Arial';
-      ctx.fillText(`Score: ${scores}`, 20, 40);
+      ctx.font = '25px Arial';
+      ctx.fillText(`Score: ${scores}`, 35, 40);
       })
 
     //Interval for creating obstacles every 2 seconds
@@ -70,8 +70,8 @@ window.onload = () => {
       player.drawCar();
       obstacles.forEach((obstacle) => obstacle.draw());
       ctx.fillStyle = 'white';
-      ctx.font = '30px Arial';
-      ctx.fillText(`Score: ${scores}`, 20, 40);
+      ctx.font = '25px Arial';
+      ctx.fillText(`Score: ${scores}`, 35, 40);
     }, 100)
 
     function checkGameOver() {
@@ -80,12 +80,15 @@ window.onload = () => {
       });
       if (crashed) {
         clearInterval(gameInterval);
-        
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 450, 285, 200);
+        ctx.fillStyle = 'red';
+        ctx.font = '30px Arial';
+        ctx.fillText(`GAME OVER!`, 40, 530);
+        ctx.fillText(`Your final score: ${scores}`, 10, 600);
       }
     }
 
 
   }
 };
-
-//for each de todo los opbstaculos y ver si hay un opvberlap entre los obstaculos 
