@@ -26,7 +26,6 @@ window.onload = () => {
       ctx.fillText(`Score: ${scores}`, 35, 40);
     }
 
-
     //Interval for the score 
     let scores = 0; 
     setInterval(() => {
@@ -37,6 +36,7 @@ window.onload = () => {
     //Initialization of the obstacles variable (class) 
     const obstacles = [new Obstacle(ctx)];
 
+    //Initialization of the player variable (class) 
     const player = new Player(ctx);
 
     //Event listener for the car's movement
@@ -74,6 +74,7 @@ window.onload = () => {
       ctx.fillText(`Score: ${scores}`, 35, 40);
     }, 100)
 
+    //Crash check and Game Over
     function checkGameOver() {
       const crashed = obstacles.some(function (obstacle) {
         return player.crashWith(obstacle);
@@ -88,7 +89,5 @@ window.onload = () => {
         ctx.fillText(`Your final score: ${scores}`, 10, 600);
       }
     }
-
-
   }
 };

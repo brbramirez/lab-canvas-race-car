@@ -13,7 +13,6 @@ class Player {
     this.ctx.drawImage(carImg, this.x, this.y, this.width, this.height);
     }
 
-
     moveRight(){
       this.x += 10;
     }
